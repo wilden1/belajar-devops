@@ -1,10 +1,11 @@
+cat <<EOF > ci.yml
 name: Belajar-CI-Wildan
 
-on: [push] # Robot akan jalan setiap kali kau push code
+on: [push]
 
 jobs:
   check-code:
-    runs-on: ubuntu-latest # Robot ni guna server Ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: Ambil code dari repo
         uses: actions/checkout@v4
@@ -12,7 +13,6 @@ jobs:
       - name: Say Hello
         run: echo "Hello Wildan! Robot DevOps tengah check code kau..."
 
-      - name: List files
-        run: ls -R
-- name: Simulasi Error
+      - name: Simulasi Error
         run: exit 1
+EOF
