@@ -14,3 +14,5 @@ jobs:
 
       - name: List files
         run: ls -R
+- name: Simulasi Error
+        run: exit 1
