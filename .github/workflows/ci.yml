@@ -1,0 +1,16 @@
+name: Belajar-CI-Wildan
+
+on: [push] # Robot akan jalan setiap kali kau push code
+
+jobs:
+  check-code:
+    runs-on: ubuntu-latest # Robot ni guna server Ubuntu
+    steps:
+      - name: Ambil code dari repo
+        uses: actions/checkout@v4
+
+      - name: Say Hello
+        run: echo "Hello Wildan! Robot DevOps tengah check code kau..."
+
+      - name: List files
+        run: ls -R
