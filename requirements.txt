@@ -1,1 +1,1 @@
-flask
+echo "flask" > requirements.txt
