@@ -1,18 +1,25 @@
-cat <<EOF > ci.yml
-name: Belajar-CI-Wildan
+name: Docker-CI-Wildan
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
-  check-code:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Ambil code dari repo
+      - name: Ambil Code
         uses: actions/checkout@v4
 
-      - name: Say Hello
-        run: echo "Hello Wildan! Robot DevOps tengah check code kau..."
+      - name: Login ke Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Simulasi Error
-        run: exit 1
-EOF
+      - name: Build dan Push ke Docker Hub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: wildanwf/app-wildan:latest
