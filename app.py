@@ -11,3 +11,4 @@ if __name__ == "__main__":
     # Ini supaya app kau boleh ikut port yang cloud bagi nanti
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+    cache = redis.Redis(host=os.environ.get('REDIS_HOST', 'localhost'), port=6379)
